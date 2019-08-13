@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Livraria.Sistema.Models.LIVROS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EAN13)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TITULO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AUTOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EDICAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ANOEDICAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FORMATO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NUMEROPAGINAS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORIGEM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRECO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDMOVIMENTACAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EDITORAS.CNPJ)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EAN13)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TITULO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AUTOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EDICAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ANOEDICAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FORMATO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUMEROPAGINAS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORIGEM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRECO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDMOVIMENTACAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EDITORAS.CNPJ)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDLIVRO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDLIVRO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDLIVRO })
+        </td>
+    </tr>
+}
+
+</table>

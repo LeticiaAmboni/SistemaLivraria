@@ -1,0 +1,114 @@
+﻿@model Livraria.Sistema.Models.LIVROS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LIVROS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EAN13)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EAN13)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TITULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TITULO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDICAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDICAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANOEDICAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANOEDICAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FORMATO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FORMATO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUMEROPAGINAS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUMEROPAGINAS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ORIGEM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORIGEM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDMOVIMENTACAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDMOVIMENTACAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EDITORAS.CNPJ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EDITORAS.CNPJ)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDLIVRO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
