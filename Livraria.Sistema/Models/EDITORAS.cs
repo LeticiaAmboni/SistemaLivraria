@@ -11,7 +11,9 @@ namespace Livraria.Sistema.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class EDITORAS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +23,13 @@ namespace Livraria.Sistema.Models
         }
     
         public int IDEDITORA { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(14, MinimumLength = 14, ErrorMessage = "Este campo deve possuir 14 números.")]
         public string CNPJ { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(150, MinimumLength = 2, ErrorMessage = "Nome inválido.")]
         public string NOMEFANTASIA { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string EMAIL { get; set; }
         public string TELEFONE { get; set; }
     

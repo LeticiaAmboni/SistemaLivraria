@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Adicionar livro", "Create")
 </p>
 <table class="table">
     <tr>
@@ -42,10 +42,13 @@
             @Html.DisplayNameFor(model => model.PRECO)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IDMOVIMENTACAO)
+            @Html.DisplayNameFor(model => model.CATEGORIAS.NOME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EDITORAS.CNPJ)
+            @Html.DisplayNameFor(model => model.DISTRIBUIDORAS.NOMEFANTASIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EDITORAS.NOMEFANTASIA)
         </th>
         <th></th>
     </tr>
@@ -83,15 +86,18 @@
             @Html.DisplayFor(modelItem => item.PRECO)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IDMOVIMENTACAO)
+            @Html.DisplayFor(modelItem => item.CATEGORIAS.NOME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EDITORAS.CNPJ)
+            @Html.DisplayFor(modelItem => item.DISTRIBUIDORAS.NOMEFANTASIA)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDLIVRO }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDLIVRO }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDLIVRO })
+            @Html.DisplayFor(modelItem => item.EDITORAS.NOMEFANTASIA)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IDLIVRO }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IDLIVRO }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IDLIVRO })
         </td>
     </tr>
 }

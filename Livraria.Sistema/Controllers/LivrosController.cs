@@ -17,7 +17,7 @@ namespace Livraria.Sistema.Controllers
         // GET: Livros
         public ActionResult Index()
         {
-            var livros = db.LIVROS.Include(l => l.EDITORAS);
+            var livros = db.LIVROS.Include(l => l.CATEGORIAS).Include(l => l.DISTRIBUIDORAS).Include(l => l.EDITORAS);
             return View(livros.ToList());
         }
 
@@ -39,7 +39,9 @@ namespace Livraria.Sistema.Controllers
         // GET: Livros/Create
         public ActionResult Create()
         {
-            ViewBag.IDEDITORA = new SelectList(db.EDITORAS, "IDEDITORA", "CNPJ");
+            ViewBag.IDCATEGORIA = new SelectList(db.CATEGORIAS, "IDCATEGORIA", "NOME");
+            ViewBag.IDDISTRIBUIDORA = new SelectList(db.DISTRIBUIDORAS, "IDDISTRIBUIDORA", "NOMEFANTASIA");
+            ViewBag.IDEDITORA = new SelectList(db.EDITORAS, "IDEDITORA", "NOMEFANTASIA");
             return View();
         }
 
@@ -48,7 +50,7 @@ namespace Livraria.Sistema.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDLIVRO,EAN13,ISBN,TITULO,AUTOR,EDICAO,ANOEDICAO,FORMATO,NUMEROPAGINAS,ORIGEM,PRECO,IDMOVIMENTACAO,IDEDITORA")] LIVROS livros)
+        public ActionResult Create([Bind(Include = "IDLIVRO,EAN13,ISBN,TITULO,AUTOR,EDICAO,ANOEDICAO,FORMATO,NUMEROPAGINAS,ORIGEM,PRECO,IDDISTRIBUIDORA,IDEDITORA,IDCATEGORIA")] LIVROS livros)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +59,9 @@ namespace Livraria.Sistema.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDEDITORA = new SelectList(db.EDITORAS, "IDEDITORA", "CNPJ", livros.IDEDITORA);
+            ViewBag.IDCATEGORIA = new SelectList(db.CATEGORIAS, "IDCATEGORIA", "NOME", livros.IDCATEGORIA);
+            ViewBag.IDDISTRIBUIDORA = new SelectList(db.DISTRIBUIDORAS, "IDDISTRIBUIDORA", "NOMEFANTASIA", livros.IDDISTRIBUIDORA);
+            ViewBag.IDEDITORA = new SelectList(db.EDITORAS, "IDEDITORA", "NOMEFANTASIA", livros.IDEDITORA);
             return View(livros);
         }
 
@@ -73,7 +77,9 @@ namespace Livraria.Sistema.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IDEDITORA = new SelectList(db.EDITORAS, "IDEDITORA", "CNPJ", livros.IDEDITORA);
+            ViewBag.IDCATEGORIA = new SelectList(db.CATEGORIAS, "IDCATEGORIA", "NOME", livros.IDCATEGORIA);
+            ViewBag.IDDISTRIBUIDORA = new SelectList(db.DISTRIBUIDORAS, "IDDISTRIBUIDORA", "NOMEFANTASIA", livros.IDDISTRIBUIDORA);
+            ViewBag.IDEDITORA = new SelectList(db.EDITORAS, "IDEDITORA", "NOMEFANTASIA", livros.IDEDITORA);
             return View(livros);
         }
 
@@ -82,7 +88,7 @@ namespace Livraria.Sistema.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDLIVRO,EAN13,ISBN,TITULO,AUTOR,EDICAO,ANOEDICAO,FORMATO,NUMEROPAGINAS,ORIGEM,PRECO,IDMOVIMENTACAO,IDEDITORA")] LIVROS livros)
+        public ActionResult Edit([Bind(Include = "IDLIVRO,EAN13,ISBN,TITULO,AUTOR,EDICAO,ANOEDICAO,FORMATO,NUMEROPAGINAS,ORIGEM,PRECO,IDDISTRIBUIDORA,IDEDITORA,IDCATEGORIA")] LIVROS livros)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +96,9 @@ namespace Livraria.Sistema.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDEDITORA = new SelectList(db.EDITORAS, "IDEDITORA", "CNPJ", livros.IDEDITORA);
+            ViewBag.IDCATEGORIA = new SelectList(db.CATEGORIAS, "IDCATEGORIA", "NOME", livros.IDCATEGORIA);
+            ViewBag.IDDISTRIBUIDORA = new SelectList(db.DISTRIBUIDORAS, "IDDISTRIBUIDORA", "NOMEFANTASIA", livros.IDDISTRIBUIDORA);
+            ViewBag.IDEDITORA = new SelectList(db.EDITORAS, "IDEDITORA", "NOMEFANTASIA", livros.IDEDITORA);
             return View(livros);
         }
 

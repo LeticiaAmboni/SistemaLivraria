@@ -11,37 +11,56 @@ namespace Livraria.Sistema.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class LIVROS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LIVROS()
         {
             this.MOVIMENTACAO = new HashSet<MOVIMENTACAO>();
-            this.CATEGORIAS = new HashSet<CATEGORIAS>();
-            this.DISTRIBUIDORAS = new HashSet<DISTRIBUIDORAS>();
         }
     
         public int IDLIVRO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(13, MinimumLength = 13, ErrorMessage = "Este campo deve possuir 13 números.")]
         public string EAN13 { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(13, MinimumLength = 13, ErrorMessage = "Este campo deve possuir 13 números.")]
         public string ISBN { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(200, MinimumLength = 2, ErrorMessage = "Título inválido.")]
         public string TITULO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(200, MinimumLength = 1, ErrorMessage = "Nome inválido.")]
         public string AUTOR { get; set; }
+        [Range(1, 50)]
         public Nullable<byte> EDICAO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string ANOEDICAO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string FORMATO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [Range(2, 10000, ErrorMessage = "Número inválido")]
         public short NUMEROPAGINAS { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string ORIGEM { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [Range(1, 2500, ErrorMessage = "Preço inválido.")]
+        [DataType(DataType.Currency)]
         public decimal PRECO { get; set; }
-        public int IDMOVIMENTACAO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        public int IDDISTRIBUIDORA { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public int IDEDITORA { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        public int IDCATEGORIA { get; set; }
     
+        public virtual CATEGORIAS CATEGORIAS { get; set; }
+        public virtual DISTRIBUIDORAS DISTRIBUIDORAS { get; set; }
         public virtual EDITORAS EDITORAS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MOVIMENTACAO> MOVIMENTACAO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CATEGORIAS> CATEGORIAS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DISTRIBUIDORAS> DISTRIBUIDORAS { get; set; }
     }
 }

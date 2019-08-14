@@ -11,15 +11,26 @@ namespace Livraria.Sistema.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MOVIMENTACAO
     {
         public int IDMOVIMENTACAO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [Range(1, 300, ErrorMessage = "Número inválido")]
         public short QUANTIDADEPRODUTO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public string OPERACAO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime DATA { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public int IDDISTRIBUIDORA { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public int IDLIVRO { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
         public int IDFUNCIONARIO { get; set; }
     
         public virtual DISTRIBUIDORAS DISTRIBUIDORAS { get; set; }

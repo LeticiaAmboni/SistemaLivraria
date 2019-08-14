@@ -11,7 +11,9 @@ namespace Livraria.Sistema.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CATEGORIAS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +23,8 @@ namespace Livraria.Sistema.Models
         }
     
         public int IDCATEGORIA { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(150, MinimumLength = 2, ErrorMessage = "Categoria inválida.")]
         public string NOME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

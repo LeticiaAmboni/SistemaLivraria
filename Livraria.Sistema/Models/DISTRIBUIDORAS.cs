@@ -11,27 +11,39 @@ namespace Livraria.Sistema.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DISTRIBUIDORAS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DISTRIBUIDORAS()
         {
-            this.MOVIMENTACAO = new HashSet<MOVIMENTACAO>();
             this.LIVROS = new HashSet<LIVROS>();
+            this.MOVIMENTACAO = new HashSet<MOVIMENTACAO>();
         }
     
         public int IDDISTRIBUIDORA { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(14, MinimumLength = 14, ErrorMessage = "Este campo deve possuir 14 números.")]
         public string CNPJ { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(150, MinimumLength = 2, ErrorMessage = "Nome inválido.")]
         public string NOMEFANTASIA { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [DataType(DataType.EmailAddress)]
         public string EMAIL { get; set; }
         public string TELEFONE { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(150, MinimumLength = 2, ErrorMessage = "Cidade inválida.")]
         public string CIDADE { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(2, MinimumLength = 2, ErrorMessage = "Apenas a sigla do estado é aceita.")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MOVIMENTACAO> MOVIMENTACAO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LIVROS> LIVROS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MOVIMENTACAO> MOVIMENTACAO { get; set; }
     }
 }

@@ -59,8 +59,9 @@
           <ScalarProperty Name="NUMEROPAGINAS" ColumnName="NUMEROPAGINAS" />
           <ScalarProperty Name="ORIGEM" ColumnName="ORIGEM" />
           <ScalarProperty Name="PRECO" ColumnName="PRECO" />
-          <ScalarProperty Name="IDMOVIMENTACAO" ColumnName="IDMOVIMENTACAO" />
+          <ScalarProperty Name="IDDISTRIBUIDORA" ColumnName="IDDISTRIBUIDORA" />
           <ScalarProperty Name="IDEDITORA" ColumnName="IDEDITORA" />
+          <ScalarProperty Name="IDCATEGORIA" ColumnName="IDCATEGORIA" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -88,21 +89,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="LIVROCATEGORIA" TypeName="BDLIVRARIAModel.LIVROCATEGORIA" StoreEntitySet="LIVROCATEGORIA">
-      <EndProperty Name="CATEGORIAS">
-        <ScalarProperty Name="IDCATEGORIA" ColumnName="IDCATEGORIA" />
-      </EndProperty>
-      <EndProperty Name="LIVROS">
-        <ScalarProperty Name="IDLIVRO" ColumnName="IDLIVRO" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="LIVRODISTRIBUIDORA" TypeName="BDLIVRARIAModel.LIVRODISTRIBUIDORA" StoreEntitySet="LIVRODISTRIBUIDORA">
-      <EndProperty Name="DISTRIBUIDORAS">
-        <ScalarProperty Name="IDDISTRIBUIDORA" ColumnName="IDDISTRIBUIDORA" />
-      </EndProperty>
-      <EndProperty Name="LIVROS">
-        <ScalarProperty Name="IDLIVRO" ColumnName="IDLIVRO" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

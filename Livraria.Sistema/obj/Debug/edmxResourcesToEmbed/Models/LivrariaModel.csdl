@@ -6,7 +6,7 @@
     </Key>
     <Property Name="IDCATEGORIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NOME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="LIVROS" Relationship="Self.LIVROCATEGORIA" FromRole="CATEGORIAS" ToRole="LIVROS" />
+    <NavigationProperty Name="LIVROS" Relationship="Self.FK_LIVROS_CATEGORIAS" FromRole="CATEGORIAS" ToRole="LIVROS" />
   </EntityType>
   <EntityType Name="DISTRIBUIDORAS">
     <Key>
@@ -19,8 +19,8 @@
     <Property Name="TELEFONE" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
     <Property Name="CIDADE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ESTADO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="LIVROS" Relationship="Self.FK_LIVROS_DISTRIBUIDORAS" FromRole="DISTRIBUIDORAS" ToRole="LIVROS" />
     <NavigationProperty Name="MOVIMENTACAO" Relationship="Self.FK_MOVIMENTACAO_DISTRIBUIDORAS" FromRole="DISTRIBUIDORAS" ToRole="MOVIMENTACAO" />
-    <NavigationProperty Name="LIVROS" Relationship="Self.LIVRODISTRIBUIDORA" FromRole="DISTRIBUIDORAS" ToRole="LIVROS" />
   </EntityType>
   <EntityType Name="EDITORAS">
     <Key>
@@ -60,12 +60,13 @@
     <Property Name="NUMEROPAGINAS" Type="Int16" Nullable="false" />
     <Property Name="ORIGEM" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="PRECO" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
-    <Property Name="IDMOVIMENTACAO" Type="Int32" Nullable="false" />
+    <Property Name="IDDISTRIBUIDORA" Type="Int32" Nullable="false" />
     <Property Name="IDEDITORA" Type="Int32" Nullable="false" />
+    <Property Name="IDCATEGORIA" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CATEGORIAS" Relationship="Self.FK_LIVROS_CATEGORIAS" FromRole="LIVROS" ToRole="CATEGORIAS" />
+    <NavigationProperty Name="DISTRIBUIDORAS" Relationship="Self.FK_LIVROS_DISTRIBUIDORAS" FromRole="LIVROS" ToRole="DISTRIBUIDORAS" />
     <NavigationProperty Name="EDITORAS" Relationship="Self.FK_LIVROS_EDITORAS" FromRole="LIVROS" ToRole="EDITORAS" />
-    <NavigationProperty Name="MOVIMENTACAO" Relationship="Self.FK_MOVIMENTACAO_LIVROS" FromRole="LIVROS" ToRole="MOVIMENTACAO" />
-    <NavigationProperty Name="CATEGORIAS" Relationship="Self.LIVROCATEGORIA" FromRole="LIVROS" ToRole="CATEGORIAS" />
-    <NavigationProperty Name="DISTRIBUIDORAS" Relationship="Self.LIVRODISTRIBUIDORA" FromRole="LIVROS" ToRole="DISTRIBUIDORAS" />
+    <NavigationProperty Name="MOVIMENTACAO" Relationship="Self.FK_MOVIMENTACAO_LIVROS1" FromRole="LIVROS" ToRole="MOVIMENTACAO" />
   </EntityType>
   <EntityType Name="MOVIMENTACAO">
     <Key>
@@ -80,7 +81,7 @@
     <Property Name="IDFUNCIONARIO" Type="Int32" Nullable="false" />
     <NavigationProperty Name="DISTRIBUIDORAS" Relationship="Self.FK_MOVIMENTACAO_DISTRIBUIDORAS" FromRole="MOVIMENTACAO" ToRole="DISTRIBUIDORAS" />
     <NavigationProperty Name="FUNCIONARIOS" Relationship="Self.FK_MOVIMENTACAO_FUNCIONARIOS" FromRole="MOVIMENTACAO" ToRole="FUNCIONARIOS" />
-    <NavigationProperty Name="LIVROS" Relationship="Self.FK_MOVIMENTACAO_LIVROS" FromRole="MOVIMENTACAO" ToRole="LIVROS" />
+    <NavigationProperty Name="LIVROS" Relationship="Self.FK_MOVIMENTACAO_LIVROS1" FromRole="MOVIMENTACAO" ToRole="LIVROS" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -92,6 +93,30 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <Association Name="FK_LIVROS_CATEGORIAS">
+    <End Role="CATEGORIAS" Type="Self.CATEGORIAS" Multiplicity="1" />
+    <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIAS">
+        <PropertyRef Name="IDCATEGORIA" />
+      </Principal>
+      <Dependent Role="LIVROS">
+        <PropertyRef Name="IDCATEGORIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIVROS_DISTRIBUIDORAS">
+    <End Role="DISTRIBUIDORAS" Type="Self.DISTRIBUIDORAS" Multiplicity="1" />
+    <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRIBUIDORAS">
+        <PropertyRef Name="IDDISTRIBUIDORA" />
+      </Principal>
+      <Dependent Role="LIVROS">
+        <PropertyRef Name="IDDISTRIBUIDORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_MOVIMENTACAO_DISTRIBUIDORAS">
     <End Role="DISTRIBUIDORAS" Type="Self.DISTRIBUIDORAS" Multiplicity="1" />
     <End Role="MOVIMENTACAO" Type="Self.MOVIMENTACAO" Multiplicity="*" />
@@ -128,7 +153,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_MOVIMENTACAO_LIVROS">
+  <Association Name="FK_MOVIMENTACAO_LIVROS1">
     <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="1" />
     <End Role="MOVIMENTACAO" Type="Self.MOVIMENTACAO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -140,14 +165,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="LIVROCATEGORIA">
-    <End Role="CATEGORIAS" Type="Self.CATEGORIAS" Multiplicity="*" />
-    <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="*" />
-  </Association>
-  <Association Name="LIVRODISTRIBUIDORA">
-    <End Role="DISTRIBUIDORAS" Type="Self.DISTRIBUIDORAS" Multiplicity="*" />
-    <End Role="LIVROS" Type="Self.LIVROS" Multiplicity="*" />
-  </Association>
   <EntityContainer Name="BDLIVRARIAEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CATEGORIAS" EntityType="Self.CATEGORIAS" />
     <EntitySet Name="DISTRIBUIDORAS" EntityType="Self.DISTRIBUIDORAS" />
@@ -156,6 +173,14 @@
     <EntitySet Name="LIVROS" EntityType="Self.LIVROS" />
     <EntitySet Name="MOVIMENTACAO" EntityType="Self.MOVIMENTACAO" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_LIVROS_CATEGORIAS" Association="Self.FK_LIVROS_CATEGORIAS">
+      <End Role="CATEGORIAS" EntitySet="CATEGORIAS" />
+      <End Role="LIVROS" EntitySet="LIVROS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIVROS_DISTRIBUIDORAS" Association="Self.FK_LIVROS_DISTRIBUIDORAS">
+      <End Role="DISTRIBUIDORAS" EntitySet="DISTRIBUIDORAS" />
+      <End Role="LIVROS" EntitySet="LIVROS" />
+    </AssociationSet>
     <AssociationSet Name="FK_MOVIMENTACAO_DISTRIBUIDORAS" Association="Self.FK_MOVIMENTACAO_DISTRIBUIDORAS">
       <End Role="DISTRIBUIDORAS" EntitySet="DISTRIBUIDORAS" />
       <End Role="MOVIMENTACAO" EntitySet="MOVIMENTACAO" />
@@ -168,17 +193,9 @@
       <End Role="FUNCIONARIOS" EntitySet="FUNCIONARIOS" />
       <End Role="MOVIMENTACAO" EntitySet="MOVIMENTACAO" />
     </AssociationSet>
-    <AssociationSet Name="FK_MOVIMENTACAO_LIVROS" Association="Self.FK_MOVIMENTACAO_LIVROS">
+    <AssociationSet Name="FK_MOVIMENTACAO_LIVROS1" Association="Self.FK_MOVIMENTACAO_LIVROS1">
       <End Role="LIVROS" EntitySet="LIVROS" />
       <End Role="MOVIMENTACAO" EntitySet="MOVIMENTACAO" />
-    </AssociationSet>
-    <AssociationSet Name="LIVROCATEGORIA" Association="Self.LIVROCATEGORIA">
-      <End Role="CATEGORIAS" EntitySet="CATEGORIAS" />
-      <End Role="LIVROS" EntitySet="LIVROS" />
-    </AssociationSet>
-    <AssociationSet Name="LIVRODISTRIBUIDORA" Association="Self.LIVRODISTRIBUIDORA">
-      <End Role="DISTRIBUIDORAS" EntitySet="DISTRIBUIDORAS" />
-      <End Role="LIVROS" EntitySet="LIVROS" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

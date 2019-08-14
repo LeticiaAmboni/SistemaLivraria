@@ -23,17 +23,23 @@ namespace Livraria.Sistema.Models
         }
     
         public int IDFUNCIONARIOS { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(200, MinimumLength = 1, ErrorMessage = "Nome inválido.")]
         public string NOME { get; set; }
         public string CELULAR { get; set; }
-        public string EMAIL { get; set; }
-        [DataType(DataType.Password)]
-        [Required(ErrorMessage ="Campo obrigatório.")]
-        public string SENHA { get; set; }
         [Required(ErrorMessage = "Campo obrigatório.")]
+        [DataType(DataType.EmailAddress)]
+        public string EMAIL { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório.")]
+        [DataType(DataType.Password)]
+        public string SENHA { get; set; }
+        [Required(ErrorMessage="Campo obrigatório.")]
+        [StringLength(200, MinimumLength = 1, ErrorMessage = "Username inválido.")]
         public string USERNAME { get; set; }
-    
+        public string LoginErrorMessage { get; internal set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MOVIMENTACAO> MOVIMENTACAO { get; set; }
-        public string LoginErrorMessage { get; internal set; }
+        
     }
 }

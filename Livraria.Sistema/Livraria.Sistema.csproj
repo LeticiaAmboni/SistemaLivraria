@@ -121,8 +121,8 @@
     <Content Include="js\main.js" />
     <Content Include="Models\LivrariaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>LivrariaModel.Context.cs</LastGenOutput>
       <DependentUpon>LivrariaModel.edmx</DependentUpon>
+      <LastGenOutput>LivrariaModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\LivrariaModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -218,6 +218,13 @@
     <Content Include="Fonts\ubuntu\Ubuntu-Medium.ttf" />
     <Content Include="Fonts\ubuntu\Ubuntu-MediumItalic.ttf" />
     <Content Include="Fonts\ubuntu\Ubuntu-Regular.ttf" />
+    <EntityDeploy Include="Models\LivrariaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LivrariaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LivrariaModel.edmx.diagram">
+      <DependentUpon>LivrariaModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -296,6 +303,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivrosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MovimentacoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -339,13 +347,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\LivrariaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LivrariaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\LivrariaModel.edmx.diagram">
-      <DependentUpon>LivrariaModel.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
@@ -359,32 +360,37 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Funcionarios\Create.cshtml" />
-    <Content Include="Views\Funcionarios\Delete.cshtml" />
-    <Content Include="Views\Funcionarios\Details.cshtml" />
-    <Content Include="Views\Funcionarios\Edit.cshtml" />
-    <Content Include="Views\Funcionarios\Index.cshtml" />
-    <Content Include="Views\Categorias\Create.cshtml" />
-    <Content Include="Views\Categorias\Delete.cshtml" />
-    <Content Include="Views\Categorias\Details.cshtml" />
-    <Content Include="Views\Categorias\Edit.cshtml" />
-    <Content Include="Views\Categorias\Index.cshtml" />
-    <Content Include="Views\Distribuidoras\Create.cshtml" />
-    <Content Include="Views\Distribuidoras\Delete.cshtml" />
-    <Content Include="Views\Distribuidoras\Details.cshtml" />
-    <Content Include="Views\Distribuidoras\Edit.cshtml" />
-    <Content Include="Views\Distribuidoras\Index.cshtml" />
-    <Content Include="Views\Editoras\Create.cshtml" />
-    <Content Include="Views\Editoras\Delete.cshtml" />
-    <Content Include="Views\Editoras\Details.cshtml" />
-    <Content Include="Views\Editoras\Edit.cshtml" />
-    <Content Include="Views\Editoras\Index.cshtml" />
     <Content Include="Views\Livros\Create.cshtml" />
     <Content Include="Views\Livros\Delete.cshtml" />
     <Content Include="Views\Livros\Details.cshtml" />
     <Content Include="Views\Livros\Edit.cshtml" />
     <Content Include="Views\Livros\Index.cshtml" />
+    <Content Include="Views\Funcionarios\Create.cshtml" />
+    <Content Include="Views\Funcionarios\Delete.cshtml" />
+    <Content Include="Views\Funcionarios\Details.cshtml" />
+    <Content Include="Views\Funcionarios\Edit.cshtml" />
+    <Content Include="Views\Funcionarios\Index.cshtml" />
+    <Content Include="Views\Editoras\Create.cshtml" />
+    <Content Include="Views\Editoras\Delete.cshtml" />
+    <Content Include="Views\Editoras\Details.cshtml" />
+    <Content Include="Views\Editoras\Edit.cshtml" />
+    <Content Include="Views\Editoras\Index.cshtml" />
+    <Content Include="Views\Distribuidoras\Create.cshtml" />
+    <Content Include="Views\Distribuidoras\Delete.cshtml" />
+    <Content Include="Views\Distribuidoras\Details.cshtml" />
+    <Content Include="Views\Distribuidoras\Edit.cshtml" />
+    <Content Include="Views\Distribuidoras\Index.cshtml" />
+    <Content Include="Views\Categorias\Create.cshtml" />
+    <Content Include="Views\Categorias\Delete.cshtml" />
+    <Content Include="Views\Categorias\Details.cshtml" />
+    <Content Include="Views\Categorias\Edit.cshtml" />
+    <Content Include="Views\Categorias\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Movimentacoes\Create.cshtml" />
+    <Content Include="Views\Movimentacoes\Delete.cshtml" />
+    <Content Include="Views\Movimentacoes\Details.cshtml" />
+    <Content Include="Views\Movimentacoes\Edit.cshtml" />
+    <Content Include="Views\Movimentacoes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
