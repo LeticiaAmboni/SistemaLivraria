@@ -33,12 +33,10 @@ namespace Livraria.Sistema.Controllers
                 {
                     Session["IDFUNCIONARIOS"] = userDetails.IDFUNCIONARIOS;
                     Session["USERNAME"] = userDetails.USERNAME;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Livros");
                 }
             }
-            
-            
-            
+          
         }
     }
 }

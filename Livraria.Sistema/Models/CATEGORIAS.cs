@@ -27,7 +27,7 @@ namespace Livraria.Sistema.Models
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(150, MinimumLength = 2, ErrorMessage = "Categoria inválida.")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Este campo aceita apenas letras.")]
         [Display(Name = "Categoria")]
         public string NOME { get; set; }
     

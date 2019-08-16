@@ -39,3 +39,7 @@ h2 {
 .form-group {
     font-weight: bold;
 }
+
+.nav-link:link {
+    color: #ffffff;
+}

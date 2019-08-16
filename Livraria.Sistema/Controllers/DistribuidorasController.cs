@@ -48,7 +48,7 @@ namespace Livraria.Sistema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDDISTRIBUIDORA,CNPJ,NOMEFANTASIA,EMAIL,TELEFONE,CIDADE,ESTADO")] DISTRIBUIDORAS distribuidoras)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && (ValidacaoCnpj.IsCnpj(distribuidoras.CNPJ) == true))
             {
                 db.DISTRIBUIDORAS.Add(distribuidoras);
                 db.SaveChanges();

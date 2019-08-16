@@ -8,10 +8,12 @@ using System.Web;
 using System.Web.Mvc;
 using Livraria.Sistema.Models;
 
+
 namespace Livraria.Sistema.Controllers
 {
     public class EditorasController : Controller
     {
+
         private BDLIVRARIAEntities db = new BDLIVRARIAEntities();
 
         // GET: Editoras
@@ -48,7 +50,7 @@ namespace Livraria.Sistema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDEDITORA,CNPJ,NOMEFANTASIA,EMAIL,TELEFONE")] EDITORAS editoras)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid && (ValidacaoCnpj.IsCnpj(editoras.CNPJ) == true))
             {
                 db.EDITORAS.Add(editoras);
                 db.SaveChanges();

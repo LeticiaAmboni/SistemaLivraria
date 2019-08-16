@@ -42,7 +42,7 @@ namespace Livraria.Sistema.Models
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = "Nome inválido.")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Este campo aceita apenas letras.")]
         [Display(Name = "Autor")]
         public string AUTOR { get; set; }
 
@@ -51,12 +51,13 @@ namespace Livraria.Sistema.Models
         public Nullable<byte> EDICAO { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]
+        [StringLength(4, MinimumLength = 4, ErrorMessage = "Este campo aceita apenas 4 números.")]
         [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
         [Display(Name = "Ano")]
         public string ANOEDICAO { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Este campo aceita apenas letras.")]
         [Display(Name = "Formato")]
         public string FORMATO { get; set; }
 

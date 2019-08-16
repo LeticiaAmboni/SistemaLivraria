@@ -28,6 +28,7 @@ namespace Livraria.Sistema.Models
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(14, MinimumLength = 14, ErrorMessage = "Este campo deve possuir 14 números.")]
         [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
+        
         public string CNPJ { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]

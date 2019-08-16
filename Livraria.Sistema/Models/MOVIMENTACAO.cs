@@ -27,6 +27,7 @@ namespace Livraria.Sistema.Models
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(1, MinimumLength = 1, ErrorMessage = "Insira apenas um caractere. C (compra) | V (venda)")]
+        [RegularExpression("^[CVcv]", ErrorMessage = "Este campo aceita apenas os caracteres C e V.")]
         [Display(Name = "Operação")]
         public string OPERACAO { get; set; }
 
