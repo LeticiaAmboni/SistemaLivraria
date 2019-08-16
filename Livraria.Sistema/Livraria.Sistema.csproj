@@ -343,6 +343,7 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>LivrariaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ValidacaoCnpj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

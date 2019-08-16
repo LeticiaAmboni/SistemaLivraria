@@ -4,11 +4,13 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<br>
+<h2>Apagar movimentação</h2>
+<br>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que deseja apagar esta movimentação?</h3>
+
 <div>
-    <h4>MOVIMENTACAO</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -36,11 +38,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DISTRIBUIDORAS.CNPJ)
+            @Html.DisplayNameFor(model => model.DISTRIBUIDORAS.NOMEFANTASIA)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DISTRIBUIDORAS.CNPJ)
+            @Html.DisplayFor(model => model.DISTRIBUIDORAS.NOMEFANTASIA)
         </dd>
 
         <dt>
@@ -52,11 +54,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LIVROS.EAN13)
+            @Html.DisplayNameFor(model => model.LIVROS.TITULO)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LIVROS.EAN13)
+            @Html.DisplayFor(model => model.LIVROS.TITULO)
         </dd>
 
     </dl>
@@ -65,8 +67,10 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <button type="submit" value="Delete" class="btn btn-outline-danger">Apagar</button>
+            <button type="button" class="btn btn-outline-primary">
+                @Html.ActionLink("Voltar para a lista", "Index")
+            </button>
         </div>
     }
 </div>

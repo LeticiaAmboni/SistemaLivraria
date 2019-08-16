@@ -4,10 +4,14 @@
     ViewBag.Title = "Index";
 }
 
+<br>
 <h2>Funcionários</h2>
+<br>
 
 <p>
-    @Html.ActionLink("Adicionar funcionário", "Create")
+    <button type="button" class="btn btn-outline-primary">
+        @Html.ActionLink("Adicionar funcionário", "Create")
+    </button>
 </p>
 <table class="table">
     <tr>
@@ -19,9 +23,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EMAIL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SENHA)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.USERNAME)
@@ -41,15 +42,12 @@
             @Html.DisplayFor(modelItem => item.EMAIL)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SENHA)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.USERNAME)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.IDFUNCIONARIOS }) |
             @Html.ActionLink("Detalhes", "Details", new { id=item.IDFUNCIONARIOS }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.IDFUNCIONARIOS })
+            @Html.ActionLink("Apagar", "Delete", new { id=item.IDFUNCIONARIOS })
         </td>
     </tr>
 }

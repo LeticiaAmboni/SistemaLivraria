@@ -1,18 +1,41 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 250px;
 }
 
+.navbar navbar-dark bg-dark {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 35px;
+}
+
+.table {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+h2 {
+    text-transform: uppercase;
+}
+
+.form-group {
+    font-weight: bold;
+}

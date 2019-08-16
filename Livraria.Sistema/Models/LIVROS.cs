@@ -21,39 +21,67 @@ namespace Livraria.Sistema.Models
         {
             this.MOVIMENTACAO = new HashSet<MOVIMENTACAO>();
         }
-    
+
+        [Display(Name = "Livro")]
         public int IDLIVRO { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(13, MinimumLength = 13, ErrorMessage = "Este campo deve possuir 13 números.")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
         public string EAN13 { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(13, MinimumLength = 13, ErrorMessage = "Este campo deve possuir 13 números.")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
         public string ISBN { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = "Título inválido.")]
+        [Display(Name = "Título")]
         public string TITULO { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
-        [StringLength(200, MinimumLength = 1, ErrorMessage = "Nome inválido.")]
+        [StringLength(200, MinimumLength = 2, ErrorMessage = "Nome inválido.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [Display(Name = "Autor")]
         public string AUTOR { get; set; }
-        [Range(1, 50)]
+
+        [Range(1, 20, ErrorMessage = "Número inválido.")]
+        [Display(Name = "Edição")]
         public Nullable<byte> EDICAO { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
+        [Display(Name = "Ano")]
         public string ANOEDICAO { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [Display(Name = "Formato")]
         public string FORMATO { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
-        [Range(2, 10000, ErrorMessage = "Número inválido")]
+        [Range(2, 5000, ErrorMessage = "Número inválido")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
+        [Display(Name = "Páginas")]
         public short NUMEROPAGINAS { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
+        [Display(Name = "Origem")]
         public string ORIGEM { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
-        [Range(1, 2500, ErrorMessage = "Preço inválido.")]
+        [Range(1, 3500, ErrorMessage = "Preço inválido.")]
         [DataType(DataType.Currency)]
+        [Display(Name = "Preço")]
         public decimal PRECO { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         public int IDDISTRIBUIDORA { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         public int IDEDITORA { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         public int IDCATEGORIA { get; set; }
     

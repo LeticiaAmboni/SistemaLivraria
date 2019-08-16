@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<br>
+<h2>Dados da movimentação</h2>
 
 <div>
-    <h4>MOVIMENTACAO</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -35,11 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DISTRIBUIDORAS.CNPJ)
+            @Html.DisplayNameFor(model => model.DISTRIBUIDORAS.NOMEFANTASIA)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DISTRIBUIDORAS.CNPJ)
+            @Html.DisplayFor(model => model.DISTRIBUIDORAS.NOMEFANTASIA)
         </dd>
 
         <dt>
@@ -51,16 +51,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LIVROS.EAN13)
+            @Html.DisplayNameFor(model => model.LIVROS.TITULO)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LIVROS.EAN13)
+            @Html.DisplayFor(model => model.LIVROS.TITULO)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDMOVIMENTACAO }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn btn-outline-primary">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.IDMOVIMENTACAO })
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+        @Html.ActionLink("Voltar para a lista", "Index")
+    </button>
 </p>

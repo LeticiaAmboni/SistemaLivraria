@@ -48,7 +48,7 @@ namespace Livraria.Sistema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDEDITORA,CNPJ,NOMEFANTASIA,EMAIL,TELEFONE")] EDITORAS editoras)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
                 db.EDITORAS.Add(editoras);
                 db.SaveChanges();

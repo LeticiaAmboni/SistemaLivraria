@@ -4,10 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br>
+<h2>Movimentações</h2>
+<br>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" class="btn btn-outline-primary">
+        @Html.ActionLink("Nova movimentação", "Create")
+    </button>
 </p>
 <table class="table">
     <tr>
@@ -21,13 +25,13 @@
             @Html.DisplayNameFor(model => model.DATA)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DISTRIBUIDORAS.CNPJ)
+            @Html.DisplayNameFor(model => model.DISTRIBUIDORAS.NOMEFANTASIA)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FUNCIONARIOS.NOME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LIVROS.EAN13)
+            @Html.DisplayNameFor(model => model.LIVROS.TITULO)
         </th>
         <th></th>
     </tr>
@@ -44,18 +48,18 @@
             @Html.DisplayFor(modelItem => item.DATA)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DISTRIBUIDORAS.CNPJ)
+            @Html.DisplayFor(modelItem => item.DISTRIBUIDORAS.NOMEFANTASIA)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FUNCIONARIOS.NOME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LIVROS.EAN13)
+            @Html.DisplayFor(modelItem => item.LIVROS.TITULO)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDMOVIMENTACAO }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDMOVIMENTACAO }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDMOVIMENTACAO })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IDMOVIMENTACAO }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IDMOVIMENTACAO }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.IDMOVIMENTACAO })
         </td>
     </tr>
 }

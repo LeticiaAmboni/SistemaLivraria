@@ -21,20 +21,34 @@ namespace Livraria.Sistema.Models
         {
             this.MOVIMENTACAO = new HashSet<MOVIMENTACAO>();
         }
-    
+
+        [Display(Name = "Funcionário")]
         public int IDFUNCIONARIOS { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(200, MinimumLength = 1, ErrorMessage = "Nome inválido.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [Display(Name = "Nome do funcionário")]
         public string NOME { get; set; }
+
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
+        [StringLength(14, MinimumLength = 8, ErrorMessage = "Este campo deve possuir pelo menos 8 números.")]
+        [Display(Name = "Celular")]
         public string CELULAR { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
         public string EMAIL { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [DataType(DataType.Password)]
+        [Display(Name = "Senha")]
         public string SENHA { get; set; }
+
         [Required(ErrorMessage="Campo obrigatório.")]
         [StringLength(200, MinimumLength = 1, ErrorMessage = "Username inválido.")]
+        [Display(Name = "Username")]
         public string USERNAME { get; set; }
         public string LoginErrorMessage { get; internal set; }
 

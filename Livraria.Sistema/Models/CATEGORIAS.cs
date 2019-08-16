@@ -21,10 +21,14 @@ namespace Livraria.Sistema.Models
         {
             this.LIVROS = new HashSet<LIVROS>();
         }
-    
+
+        [Display(Name = "Categoria")]
         public int IDCATEGORIA { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(150, MinimumLength = 2, ErrorMessage = "Categoria inválida.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [Display(Name = "Categoria")]
         public string NOME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

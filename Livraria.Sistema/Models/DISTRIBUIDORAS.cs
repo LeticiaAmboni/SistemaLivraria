@@ -22,23 +22,40 @@ namespace Livraria.Sistema.Models
             this.LIVROS = new HashSet<LIVROS>();
             this.MOVIMENTACAO = new HashSet<MOVIMENTACAO>();
         }
-    
+
+        [Display(Name = "Distribuidora")]
         public int IDDISTRIBUIDORA { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(14, MinimumLength = 14, ErrorMessage = "Este campo deve possuir 14 números.")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
         public string CNPJ { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(150, MinimumLength = 2, ErrorMessage = "Nome inválido.")]
+        [Display(Name = "Distribuidora")]
         public string NOMEFANTASIA { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
         public string EMAIL { get; set; }
+
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
+        [StringLength(14, MinimumLength = 8, ErrorMessage = "Este campo deve possuir pelo menos 8 números.")]
+        [Display(Name = "Telefone")]
         public string TELEFONE { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(150, MinimumLength = 2, ErrorMessage = "Cidade inválida.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [Display(Name = "Cidade")]
         public string CIDADE { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(2, MinimumLength = 2, ErrorMessage = "Apenas a sigla do estado é aceita.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [Display(Name = "Estado")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
