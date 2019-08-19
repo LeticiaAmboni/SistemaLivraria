@@ -1,3 +1,4 @@
+using Livraria.Sistema.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace Livraria.Sistema
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }

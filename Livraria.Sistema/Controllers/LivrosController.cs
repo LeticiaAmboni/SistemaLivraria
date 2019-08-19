@@ -4,9 +4,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Livraria.Sistema.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.Sistema.Controllers
 {
@@ -15,10 +17,31 @@ namespace Livraria.Sistema.Controllers
         private BDLIVRARIAEntities db = new BDLIVRARIAEntities();
 
         // GET: Livros
-        public ActionResult Index()
+        public async Task<ActionResult> Index(string id, string procuraAutor, string procuraCategoria)
         {
             var livros = db.LIVROS.Include(l => l.CATEGORIAS).Include(l => l.DISTRIBUIDORAS).Include(l => l.EDITORAS);
-            return View(livros.ToList());
+
+            livros = from l in db.LIVROS
+                         select l;
+            if (!String.IsNullOrEmpty(id))
+            {
+                livros = livros.Where(s => s.TITULO.Contains(id));
+            }
+
+            if (!String.IsNullOrEmpty(procuraAutor))
+            {
+                livros = livros.Where(s => s.AUTOR.Contains(procuraAutor));
+            }
+
+            if (!String.IsNullOrEmpty(procuraCategoria))
+            {
+                livros = livros.Where(s => s.CATEGORIAS.NOME.Contains(procuraCategoria));
+            }
+
+
+            return View(await livros.ToListAsync());
+
+            // return View(livros.ToList());
         }
 
         // GET: Livros/Details/5
@@ -136,5 +159,18 @@ namespace Livraria.Sistema.Controllers
             }
             base.Dispose(disposing);
         }
+
+       // public async Task<IActionResult> ProcurarPorTitulo(string procurar)
+        // {
+            // return View(db.LIVROS.Where(x => x.TITULO.Contains(procurar) || procurar == null).ToList());
+           // var livros = from l in db.LIVROS
+            //             select l;
+            // if (!String.IsNullOrEmpty(procurar))
+            //{
+              //  livros = livros.Where(s => s.TITULO.Contains(procurar));
+            //}
+
+            // return View(await livros.ToListAsync());
+        //}
     }
 }

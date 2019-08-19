@@ -72,8 +72,8 @@ namespace Livraria.Sistema.Models
         public string ORIGEM { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]
-        [Range(1, 3500, ErrorMessage = "Preço inválido.")]
         [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         [Display(Name = "Preço")]
         public decimal PRECO { get; set; }
 

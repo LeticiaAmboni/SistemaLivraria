@@ -12,6 +12,19 @@
         @Html.ActionLink("Adicionar livro", "Create")
     </button>
 </p>
+<br>
+
+@using (Html.BeginForm("Index", "Livros", FormMethod.Get))
+{
+    <p>
+        Título:  @Html.TextBox("id") <input type="submit" value="Procurar" />
+        
+        Autor: @Html.TextBox("procuraAutor") <input type="submit" value="Procurar" />
+
+        Categoria: @Html.TextBox("procuraCategoria") <input type="submit" value="Procurar" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -56,53 +69,54 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EAN13)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ISBN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TITULO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AUTOR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EDICAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ANOEDICAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FORMATO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NUMEROPAGINAS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ORIGEM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PRECO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CATEGORIAS.NOME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DISTRIBUIDORAS.NOMEFANTASIA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EDITORAS.NOMEFANTASIA)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IDLIVRO }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.IDLIVRO }) |
-            @Html.ActionLink("Apagar", "Delete", new { id=item.IDLIVRO })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EAN13)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TITULO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AUTOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EDICAO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ANOEDICAO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FORMATO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NUMEROPAGINAS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORIGEM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRECO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CATEGORIAS.NOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DISTRIBUIDORAS.NOMEFANTASIA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EDITORAS.NOMEFANTASIA)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IDLIVRO }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.IDLIVRO }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.IDLIVRO })
+            </td>
+        </tr>
+    }
 
 </table>
