@@ -93,3 +93,12 @@ C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\System.Memory.xml
 C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\System.Numerics.Vectors.xml
 C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\System.Text.Encodings.Web.xml
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\Antlr3.Runtime.dll
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\Newtonsoft.Json.dll
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\System.Web.Optimization.dll
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\WebActivatorEx.dll
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\WebGrease.dll
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\Antlr3.Runtime.pdb
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\Newtonsoft.Json.xml
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\System.Web.Optimization.xml
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\pt-br\System.Web.Mvc.resources.dll

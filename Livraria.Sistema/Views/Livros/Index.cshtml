@@ -1,5 +1,9 @@
-﻿@model IEnumerable<Livraria.Sistema.Models.LIVROS>
-
+﻿<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script src="jquery.maskMoney.js" type="text/javascript"></script>
+</head>
+@model IEnumerable<Livraria.Sistema.Models.LIVROS>
+@using System.Web.Optimization
 @{
     ViewBag.Title = "Index";
 }
@@ -14,109 +18,25 @@
 </p>
 <br>
 
-@using (Html.BeginForm("Index", "Livros", FormMethod.Get))
+@using (Ajax.BeginForm("Index", "Livros", new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divListaLivros" }))
 {
     <p>
-        Título:  @Html.TextBox("id") <input type="submit" value="Procurar" />
-        
-        Autor: @Html.TextBox("procuraAutor") <input type="submit" value="Procurar" />
+        Título:  @Html.TextBox("id")
+
+        Autor: @Html.TextBox("procuraAutor")
 
         Categoria: @Html.TextBox("procuraCategoria") <input type="submit" value="Procurar" />
     </p>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.EAN13)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ISBN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TITULO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AUTOR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EDICAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ANOEDICAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FORMATO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NUMEROPAGINAS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ORIGEM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRECO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CATEGORIAS.NOME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DISTRIBUIDORAS.NOMEFANTASIA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EDITORAS.NOMEFANTASIA)
-        </th>
-        <th></th>
-    </tr>
+@Html.Partial("_Livros", Model)
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EAN13)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TITULO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AUTOR)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EDICAO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ANOEDICAO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FORMATO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NUMEROPAGINAS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ORIGEM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PRECO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CATEGORIAS.NOME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DISTRIBUIDORAS.NOMEFANTASIA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EDITORAS.NOMEFANTASIA)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.IDLIVRO }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.IDLIVRO }) |
-                @Html.ActionLink("Apagar", "Delete", new { id = item.IDLIVRO })
-            </td>
-        </tr>
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
-</table>
+<script>
+    $(function () {
+        $('#PRECO').maskMoney();
+    })
+</script>

@@ -38,6 +38,8 @@ namespace Livraria.Sistema.Controllers
                 livros = livros.Where(s => s.CATEGORIAS.NOME.Contains(procuraCategoria));
             }
 
+            if (Request.IsAjaxRequest())
+                return PartialView("_Livros", livros.ToList());
 
             return View(await livros.ToListAsync());
 
@@ -74,7 +76,7 @@ namespace Livraria.Sistema.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDLIVRO,EAN13,ISBN,TITULO,AUTOR,EDICAO,ANOEDICAO,FORMATO,NUMEROPAGINAS,ORIGEM,PRECO,IDDISTRIBUIDORA,IDEDITORA,IDCATEGORIA")] LIVROS livros)
-        {
+        {            
             if (ModelState.IsValid)
             {
                 db.LIVROS.Add(livros);

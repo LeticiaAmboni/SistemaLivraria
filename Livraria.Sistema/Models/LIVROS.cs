@@ -85,7 +85,7 @@ namespace Livraria.Sistema.Models
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         public int IDCATEGORIA { get; set; }
-    
+
         public virtual CATEGORIAS CATEGORIAS { get; set; }
         public virtual DISTRIBUIDORAS DISTRIBUIDORAS { get; set; }
         public virtual EDITORAS EDITORAS { get; set; }

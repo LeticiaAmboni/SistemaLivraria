@@ -9,24 +9,29 @@ namespace Livraria.Sistema.Models
 {
     public class DecimalModelBinder : IModelBinder
     {
-        public object BindModel(ControllerContext controllerContext,
-        ModelBindingContext bindingContext)
+        public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             ValueProviderResult valueResult = bindingContext.ValueProvider
                 .GetValue(bindingContext.ModelName);
+
             ModelState modelState = new ModelState { Value = valueResult };
+
             object actualValue = null;
-            try
+
+            if (valueResult.AttemptedValue != string.Empty)
             {
-                actualValue = Convert.ToDecimal(valueResult.AttemptedValue,
-                    CultureInfo.CurrentCulture);
-            }
-            catch (FormatException e)
-            {
-                modelState.Errors.Add(e);
+                try
+                {
+                    actualValue = Convert.ToDecimal(valueResult.AttemptedValue, CultureInfo.CurrentCulture);
+                }
+                catch (FormatException e)
+                {
+                    modelState.Errors.Add(e);
+                }
             }
 
             bindingContext.ModelState.Add(bindingContext.ModelName, modelState);
+
             return actualValue;
         }
     }
