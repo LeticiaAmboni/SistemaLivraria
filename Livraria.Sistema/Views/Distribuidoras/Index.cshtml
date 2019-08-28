@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "Index";
 }
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <br>
 <h2>Distribuidoras</h2>
 <br>
 
 <p>
     <button type="button" class="btn btn-outline-primary">
-    @Html.ActionLink("Adicionar distribuidora", "Create")
+        @Html.ActionLink("Adicionar distribuidora", "Create")
     </button>
 </p>
 <table class="table">
@@ -20,47 +22,49 @@
         <th>
             @Html.DisplayNameFor(model => model.NOMEFANTASIA)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMAIL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TELEFONE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CIDADE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ESTADO)
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CNPJ)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NOMEFANTASIA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EMAIL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TELEFONE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CIDADE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ESTADO)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IDDISTRIBUIDORA }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.IDDISTRIBUIDORA }) |
-            @Html.ActionLink("Apagar", "Delete", new { id=item.IDDISTRIBUIDORA })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMEFANTASIA)
+            </td>
+            <td>
+                <button class="btn btn-outline-primary details" data-id="@item.IDDISTRIBUIDORA"><i class="glyphicon glyphicon-file"></i>Detalhes</button>
+                <button type="button" class="btn btn-outline-primary">
+                    @Html.ActionLink("Apagar", "Delete", new { @id = item.IDDISTRIBUIDORA })
+                </button>
+                <button type="button" class="btn btn-outline-primary">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IDDISTRIBUIDORA })
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+<div class="modal" id="modal">
+
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+                $("#modal").load("Distribuidoras/Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+        })
+    </script>
+}

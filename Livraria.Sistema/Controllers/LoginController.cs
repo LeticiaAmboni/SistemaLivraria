@@ -35,8 +35,16 @@ namespace Livraria.Sistema.Controllers
                     Session["USERNAME"] = userDetails.USERNAME;
                     return RedirectToAction("Index", "Livros");
                 }
+
+
             }
           
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Login");
         }
     }
 }

@@ -1,54 +1,25 @@
 ﻿@model Livraria.Sistema.Models.FUNCIONARIOS
 
 @{
+    Layout = null;
     ViewBag.Title = "Details";
 }
 
-<br>
-<h2>Dados do funcionário</h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NOME)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NOME)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CELULAR)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CELULAR)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EMAIL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EMAIL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.USERNAME)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.USERNAME)
-        </dd>
-
-    </dl>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Dados do funcionário</h4>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body">
+            <p>@Html.DisplayNameFor(model => model.NOME): @Html.DisplayFor(model => model.NOME)</p>
+            <p>@Html.DisplayNameFor(model => model.CELULAR): @Html.DisplayFor(model => model.CELULAR)</p>
+            <p>@Html.DisplayNameFor(model => model.EMAIL): @Html.DisplayFor(model => model.EMAIL)</p>
+            <p>@Html.DisplayNameFor(model => model.USERNAME): @Html.DisplayFor(model => model.USERNAME)</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+    </div><!-- /.modal-content -->
 </div>
-<p>
-    <button type="button" class="btn btn-outline-primary">
-        @Html.ActionLink("Editar", "Edit", new { id = Model.IDFUNCIONARIOS })
-    </button>
-    <button type="button" class="btn btn-outline-primary">
-        @Html.ActionLink("Voltar para a lista", "Index")
-    </button>
-</p>

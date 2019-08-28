@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <br>
 <h2>Categorias</h2>
 <br>
@@ -21,17 +22,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NOME)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IDCATEGORIA }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.IDCATEGORIA }) |
-            @Html.ActionLink("Apagar", "Delete", new { id=item.IDCATEGORIA })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOME)
+            </td>
+            <td>
+                <button class="btn btn-outline-primary details" data-id="@item.IDCATEGORIA"><i class="glyphicon glyphicon-file"></i>Detalhes</button>
+                <button type="button" class="btn btn-outline-primary">
+                        @Html.ActionLink("Apagar", "Delete", new { @id = item.IDCATEGORIA })
+                </button>
+                <button type="button" class="btn btn-outline-primary">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IDCATEGORIA })
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<div class="modal" id="modal">
+
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+                $("#modal").load("Categorias/Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+        })
+    </script>
+}

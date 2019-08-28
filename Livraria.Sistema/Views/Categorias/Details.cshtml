@@ -1,30 +1,21 @@
 ﻿@model Livraria.Sistema.Models.CATEGORIAS
 
 @{
+    Layout = null;
     ViewBag.Title = "Details";
 }
 
-<br>
-<h2>Dados da categoria</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NOME)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NOME)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    <button type="button" class="btn btn-outline-primary">
-        @Html.ActionLink("Editar", "Edit", new { id = Model.IDCATEGORIA })
-    </button>
-    <button type="button" class="btn btn-outline-primary">
-        @Html.ActionLink("Voltar para a lista", "Index")
-    </button>
-</p>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Dados da categoria</h4>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>            
+        </div>
+        <div class="modal-body">
+            <p>@Html.DisplayNameFor(model => model.NOME): @Html.DisplayFor(model => model.NOME)</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

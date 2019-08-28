@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <br>
 <h2>Funcionários</h2>
 <br>
@@ -13,43 +14,53 @@
         @Html.ActionLink("Adicionar funcionário", "Create")
     </button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NOME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CELULAR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMAIL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.USERNAME)
-        </th>
-        <th></th>
-    </tr>
+<div class="divDaTabela">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NOME)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NOME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CELULAR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EMAIL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.USERNAME)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IDFUNCIONARIOS }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.IDFUNCIONARIOS }) |
-            @Html.ActionLink("Apagar", "Delete", new { id=item.IDFUNCIONARIOS })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOME)
+                </td>
+                <td>
+                    <button class="btn btn-outline-primary details" data-id="@item.IDFUNCIONARIOS"><i class="glyphicon glyphicon-file"></i>Detalhes</button>
+                    <button type="button" class="btn btn-outline-primary">
+                        @Html.ActionLink("Apagar", "Delete", new { @id = item.IDFUNCIONARIOS })
+                    </button>
+                    <button type="button" class="btn btn-outline-primary">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IDFUNCIONARIOS })
+                    </button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<div class="modal" id="modal">
+
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+                $("#modal").load("Funcionarios/Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+        })
+    </script>
 }
-
-</table>

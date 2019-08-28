@@ -1,70 +1,27 @@
 ﻿@model Livraria.Sistema.Models.DISTRIBUIDORAS
 
 @{
+    Layout = null;
     ViewBag.Title = "Details";
 }
 
-<br>
-<h2>Dados da distribuidora</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CNPJ)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CNPJ)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NOMEFANTASIA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NOMEFANTASIA)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EMAIL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EMAIL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TELEFONE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TELEFONE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CIDADE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CIDADE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ESTADO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ESTADO)
-        </dd>
-
-    </dl>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Dados da distribuidora</h4>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body">
+            <p>@Html.DisplayNameFor(model => model.CNPJ): @Html.DisplayFor(model => model.CNPJ)</p>
+            <p>@Html.DisplayNameFor(model => model.NOMEFANTASIA): @Html.DisplayFor(model => model.NOMEFANTASIA)</p>
+            <p>@Html.DisplayNameFor(model => model.EMAIL): @Html.DisplayFor(model => model.EMAIL)</p>
+            <p>@Html.DisplayNameFor(model => model.TELEFONE): @Html.DisplayFor(model => model.TELEFONE)</p>
+            <p>@Html.DisplayNameFor(model => model.CIDADE): @Html.DisplayFor(model => model.CIDADE)</p>
+            <p>@Html.DisplayNameFor(model => model.ESTADO): @Html.DisplayFor(model => model.ESTADO)</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+    </div><!-- /.modal-content -->
 </div>
-<p>
-    <button type="button" class="btn btn-outline-primary">
-        @Html.ActionLink("Editar", "Edit", new { id = Model.IDDISTRIBUIDORA })
-    </button>
-    <button type="button" class="btn btn-outline-primary">
-        @Html.ActionLink("Voltar para a lista", "Index")
-    </button>
-</p>
+

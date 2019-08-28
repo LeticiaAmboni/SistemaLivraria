@@ -149,7 +149,7 @@ namespace Livraria.Sistema.Controllers
         {
             LIVROS livros = db.LIVROS.Find(id);
             db.LIVROS.Remove(livros);
-            db.SaveChanges();
+            _ = db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -162,17 +162,5 @@ namespace Livraria.Sistema.Controllers
             base.Dispose(disposing);
         }
 
-       // public async Task<IActionResult> ProcurarPorTitulo(string procurar)
-        // {
-            // return View(db.LIVROS.Where(x => x.TITULO.Contains(procurar) || procurar == null).ToList());
-           // var livros = from l in db.LIVROS
-            //             select l;
-            // if (!String.IsNullOrEmpty(procurar))
-            //{
-              //  livros = livros.Where(s => s.TITULO.Contains(procurar));
-            //}
-
-            // return View(await livros.ToListAsync());
-        //}
     }
 }
