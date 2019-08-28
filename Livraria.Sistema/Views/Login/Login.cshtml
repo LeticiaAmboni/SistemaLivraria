@@ -14,15 +14,17 @@
                 <div class="wrap-input100 validate-input m-b-16" data-validate="Insira o username">
                     <!--<input class="input100" type="text" name="username" placeholder="Username">-->
                     <!--<span class="focus-input100"></span>-->
-                    @Html.LabelFor(model => model.USERNAME)
-                    @Html.EditorFor(model => model.USERNAME)
+                    @Html.EditorFor(model => model.USERNAME, new {
+                        htmlAttributes = new { @class = "input100", placeholder = "Username" }
+                    })
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Insira a senha">
                     <!--<input class="input100" type="password" name="pass" placeholder="Senha">-->
                     <!--<span class="focus-input100"></span>-->
-                    @Html.LabelFor(model => model.SENHA)
-                    @Html.EditorFor(model => model.SENHA)
+                    @Html.EditorFor(model => model.SENHA, new {
+                        htmlAttributes = new { @class = "input100", placeholder = "Senha" }
+                    })
                 </div>
 
                 <br>
