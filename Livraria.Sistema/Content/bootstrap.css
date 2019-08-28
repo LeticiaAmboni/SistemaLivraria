@@ -1868,6 +1868,8 @@ pre code {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2307,6 +2309,7 @@ textarea.form-control {
   flex-flow: row wrap;
   -ms-flex-align: center;
   align-items: center;
+  border-left: 40px;
 }
 
 .form-inline .form-check {
