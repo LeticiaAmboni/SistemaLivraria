@@ -19,7 +19,7 @@ namespace Livraria.Sistema.Controllers
         }
 
         [HttpPost]
-        public ActionResult Verificacao(Livraria.Sistema.Models.FUNCIONARIOS funcionario)
+        public ActionResult Verificacao(FUNCIONARIOS funcionario)
         {
             using (BDLIVRARIAEntities db = new BDLIVRARIAEntities())
             {
@@ -31,8 +31,8 @@ namespace Livraria.Sistema.Controllers
                 }
                 else
                 {
-                    Session["IDFUNCIONARIOS"] = userDetails.IDFUNCIONARIOS;
-                    Session["USERNAME"] = userDetails.USERNAME;
+                    Session["idUsuario"] = userDetails.IDFUNCIONARIOS;
+                    Session["usuario"] = userDetails.USERNAME;
                     return RedirectToAction("Index", "Livros");
                 }
 
@@ -43,7 +43,9 @@ namespace Livraria.Sistema.Controllers
 
         public ActionResult Logout()
         {
+            Session.Clear();
             Session.Abandon();
+            Response.ClearHeaders();
             return RedirectToAction("Login", "Login");
         }
     }
