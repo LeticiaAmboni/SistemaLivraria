@@ -53,11 +53,12 @@ namespace Livraria.Sistema.Models
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(4, MinimumLength = 4, ErrorMessage = "Este campo aceita apenas 4 números.")]
         [RegularExpression("^[0-9]+$", ErrorMessage = "Este campo aceita apenas números.")]
+        [Range(1900, 2019, ErrorMessage = "Ano inválido")]
         [Display(Name = "Ano")]
         public string ANOEDICAO { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [RegularExpression(@"^[a-zà-úA-ZÀ-Ú\s]+$", ErrorMessage = "Este campo aceita apenas letras.")]
         [Display(Name = "Formato")]
         public string FORMATO { get; set; }
 
@@ -69,6 +70,7 @@ namespace Livraria.Sistema.Models
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         [Display(Name = "Origem")]
+        [RegularExpression(@"^[a-zà-úA-ZÀ-Ú\s]+$", ErrorMessage = "Este campo aceita apenas letras.")]
         public string ORIGEM { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]

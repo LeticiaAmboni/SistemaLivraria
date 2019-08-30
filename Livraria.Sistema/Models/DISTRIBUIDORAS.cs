@@ -48,13 +48,13 @@ namespace Livraria.Sistema.Models
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(150, MinimumLength = 2, ErrorMessage = "Cidade inválida.")]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [RegularExpression(@"^[a-zà-úA-ZÀ-Ú\s]+$", ErrorMessage = "Este campo aceita apenas letras.")]
         [Display(Name = "Cidade")]
         public string CIDADE { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         [StringLength(2, MinimumLength = 2, ErrorMessage = "Apenas a sigla do estado é aceita.")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Este campo aceita apenas letras.")]
+        [RegularExpression(@"^[A-Z]+$", ErrorMessage = "Este campo aceita apenas letras maiúsculas.")]
         [Display(Name = "Estado")]
         public string ESTADO { get; set; }
     

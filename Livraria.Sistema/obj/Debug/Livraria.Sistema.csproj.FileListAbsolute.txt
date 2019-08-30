@@ -102,3 +102,4 @@ C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\Antlr3.Runtime.pdb
 C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\Newtonsoft.Json.xml
 C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\System.Web.Optimization.xml
 C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\pt-br\System.Web.Mvc.resources.dll
+C:\Projeto\Livraria.Sistema\Livraria.Sistema\bin\DataAnnotationsValidator.dll

@@ -11,36 +11,38 @@
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-dark" id="navdiferente">
         <ul class="nav justify-content-center">
             <li class="nav-link">
-                @Html.ActionLink("Livros", "Index", "Livros")
+                @Html.ActionLink("Livros", "Index", "Livros", null, new { @class = "my-class" })
             </li>
             <li class="nav-link">
-                @Html.ActionLink("Categorias", "Index", "Categorias")
+                @Html.ActionLink("Categorias", "Index", "Categorias", null, new { @class = "my-class" })
             </li>
             <li class="nav-link">
-                @Html.ActionLink("Editoras", "Index", "Editoras")
+                @Html.ActionLink("Editoras", "Index", "Editoras", null, new { @class = "my-class" })
             </li>
             <li class="nav-link">
-                @Html.ActionLink("Distribuidoras", "Index", "Distribuidoras")
+                @Html.ActionLink("Distribuidoras", "Index", "Distribuidoras", null, new { @class = "my-class" })
             </li>
             <li class="nav-link">
-                @Html.ActionLink("Movimentações", "Index", "Movimentacoes")
+                @Html.ActionLink("Movimentações", "Index", "Movimentacoes", null, new { @class = "my-class" })
             </li>
             <li class="nav-link">
-                @Html.ActionLink("Funcionários", "Index", "Funcionarios")
+                @Html.ActionLink("Funcionários", "Index", "Funcionarios", null, new { @class = "my-class" })
             </li>
             <li class="nav-link" id="logout">
-                <a href="@Url.Action("Logout", "Login")">Sair</a>
+                @Html.ActionLink("Sair", "Logout", "Login", null, new { @class = "my-class" })
+                <!--<a href="@Url.Action("Logout", "Login")">Sair</a>-->
             </li>
         </ul>
     </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - SistemaLivraria</p>
         </footer>
     </div>
 

@@ -26,8 +26,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OPERACAO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OPERACAO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OPERACAO, "", new { @class = "text-danger" })
+                     <input type="radio" name="OPERACAO" value="C"> C<br>
+                     <input type="radio" name="OPERACAO" value="V"> V<br>
             </div>
         </div>
 

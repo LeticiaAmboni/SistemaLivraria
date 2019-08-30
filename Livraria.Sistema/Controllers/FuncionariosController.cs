@@ -46,7 +46,7 @@ namespace Livraria.Sistema.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDFUNCIONARIOS,NOME,CELULAR,EMAIL,SENHA,USERNAME")] FUNCIONARIOS funcionarios)
+        public ActionResult Create([Bind(Include = "IDFUNCIONARIOS,NOME,CELULAR,EMAIL,SENHA,senhaConfirmada,USERNAME")] FUNCIONARIOS funcionarios)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Livraria.Sistema.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDFUNCIONARIOS,NOME,CELULAR,EMAIL,SENHA,USERNAME")] FUNCIONARIOS funcionarios)
+        public ActionResult Edit([Bind(Include = "IDFUNCIONARIOS,NOME,CELULAR,EMAIL,SENHA,senhaConfirmada,USERNAME")] FUNCIONARIOS funcionarios)
         {
             if (ModelState.IsValid)
             {

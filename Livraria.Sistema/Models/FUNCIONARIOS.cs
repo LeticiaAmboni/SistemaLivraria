@@ -46,6 +46,11 @@ namespace Livraria.Sistema.Models
         [Display(Name = "Senha")]
         public string SENHA { get; set; }
 
+        [DataType(DataType.Password)]
+        [Compare("SENHA", ErrorMessage = "As senhas são diferentes.")]
+        [Display(Name = "Confirme a senha")]
+        public string senhaConfirmada { get; set; }
+
         [Required(ErrorMessage="Campo obrigatório.")]
         [StringLength(200, MinimumLength = 1, ErrorMessage = "Username inválido.")]
         [Display(Name = "Username")]
