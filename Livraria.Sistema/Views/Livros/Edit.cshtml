@@ -84,7 +84,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ORIGEM, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ORIGEM, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="radio" name="ORIGEM" value="Nacional"> Nacional<br>
+                <input type="radio" name="ORIGEM" value="Importado"> Importado<br>
                 @Html.ValidationMessageFor(model => model.ORIGEM, "", new { @class = "text-danger" })
             </div>
         </div>

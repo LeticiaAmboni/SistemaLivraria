@@ -1,4 +1,11 @@
 ﻿@using System.Web.Optimization
+
+@{ 
+    if (Session["idUsuario"] == null)
+    {
+        Response.Redirect("/Login/Login");
+    }
+}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

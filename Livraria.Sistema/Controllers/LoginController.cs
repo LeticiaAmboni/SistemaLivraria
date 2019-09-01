@@ -26,7 +26,7 @@ namespace Livraria.Sistema.Controllers
                 var userDetails = db.FUNCIONARIOS.Where(x => x.USERNAME == funcionario.USERNAME && x.SENHA == funcionario.SENHA).FirstOrDefault();
                 if (userDetails == null)
                 {
-                    funcionario.LoginErrorMessage = "Senha e/ou username incorretos.";
+                    ModelState.AddModelError("", "Senha e/ou username incorretos.");
                     return View("Login", funcionario);
                 }
                 else
